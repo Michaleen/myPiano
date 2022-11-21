@@ -1,0 +1,54 @@
+:root {
+    background-color: rgb(226, 185, 122);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+*, ::before, ::after {
+    box-sizing: inherit;
+}
+
+#pianoContainer {
+    background-color: aquamarine;
+    border: 12px solid rgb(221, 41, 41);
+    border-radius: 20px;
+    padding: 100px 20px 15px 20px;
+    width: fit-content;
+
+  }
+
+#key-board {
+    background-color: rgb(48, 129, 104);
+    display:flex;
+    align-items: flex-start;
+    width: fit-content;
+    
+   
+  }
+
+.whiteKey {
+    background-color: rgb(247, 226, 226);
+    position: relative;
+    width: 60px;
+    height: 200px;
+    border-radius: 0% 0% 10% 10%;
+
+}
+
+.blackKey {
+    background-color: black;
+    position: absolute;
+    width: 40px;
+    height: 140px;
+    border-radius: 0% 0% 5% 5%;
+    z-index: 2;
+    left:40px;
+   
+
+}
+
+#blank1, #blank2 {
+    display: none;
+}
+}
