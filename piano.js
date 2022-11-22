@@ -69,23 +69,23 @@ let metroMS = 60000 / 120;
 console.log(metroMS);
 
 let metControls = document.getElementById('met-controls');
-var metState = false;
+var metRunning;
 
 metControls.addEventListener('click', function(e){
     if (e.target.id === "met-start-btn"){
-    // clearTimeout(metroFunc);                   BUG NEED TO CLEAR TIME OUT CAN LAUNCH MULTIPLE AUDIO OBJECTS ??
+        clearTimeout(metRunning);                 //  BUG NEED TO CLEAR TIME OUT CAN LAUNCH MULTIPLE AUDIO OBJECTS ??
         metroFunc(metroMS);
         console.log(e.target.id);
     }
     else if (e.target.id === "met-stop-btn"){     //how to clear time out or stop metrofunc function??
-        clearTimeout();
+        clearTimeout(metRunning);
         console.log(e.target.id)
     }
 })
 
 
 function metroFunc(metroInterval) {
-    setTimeout(function () {
+    metRunning = setTimeout(function () {
         new Audio(`assets/images/AfricanPerc1.WAV`).play()
         // Then recall the outside parent function to
         // create a recursive loop.
