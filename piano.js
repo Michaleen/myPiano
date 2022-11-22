@@ -23,7 +23,7 @@ let octaveNum = 6; //user input??
 let keyboardString ="";
 renderKeyBoard(octaveNum)
 
-function renderKeyBoard(octs) {                    // BUG NONE OF THE BLACK KEYS ARE PLAYING
+function renderKeyBoard(octs) {
 for (let i = 3; i <= octs; i++) {                   //nth child on divs to make this dryer??
     keyboardString += (`<div class="whiteKey" id="C${i}">      
                     <div class="blackKey" id="Db${i}"></div>
@@ -60,22 +60,14 @@ keyBoard.innerHTML = keyboardString;
 
 let metronomePic = document.getElementById('met-image')
 
-    
-
-
 let metroMS = 60000 / 120; 
-console.log(metroMS);
-
 let metControls = document.getElementById('met-controls');
 var metRunning;
 
 metControls.addEventListener('click', function(e){
     if (e.target.id === "met-start-btn"){
-        
         clearTimeout(metRunning);
         metroFunc(metroMS);
-
-        console.log(e.target.id);
     }
     else if (e.target.id === "met-stop-btn"){     //how to clear time out or stop metrofunc function??
         clearTimeout(metRunning);
@@ -83,30 +75,29 @@ metControls.addEventListener('click', function(e){
     }
 })
 
-
+let tick = true;
 function metroFunc(metroInterval) {
     metRunning = setTimeout(function () {
         new Audio(`assets/images/AfricanPerc1.WAV`).play();
-        let tick = true;
-        tick = !tick ? metronomePic.src="assets/images/metRight.jpg" : metronomePic.src="assets/images/metLeft.jpg";
-        // Then recall the outside parent function to
+        tick = tick !== true;
+        tick === true ? metronomePic.src="assets/images/metRight.jpg" : metronomePic.src="assets/images/metLeft.jpg";
+        console.log(tick)// Then recall the outside parent function to
         // create a recursive loop.
         metroFunc(metroInterval);
         
         console.log(tick);
     }, metroInterval );
-
-
-
-
-
 }
 
-//metroFunc(metroMS); calls recursion function for metronome
+/*
+let bool = true;
 
+bool = bool !== true;
+console.log(bool); // 👉️ false
 
-// metronome using timeouts and audio object
-
+bool = bool !== true;
+console.log(bool); //
+*/
 //MOUSE click EVENT is clunky buggy with stuck sound options?
 
 
