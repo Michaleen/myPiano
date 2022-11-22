@@ -26,22 +26,22 @@ renderKeyBoard(octaveNum)
 function renderKeyBoard(octs) {                    // BUG NONE OF THE BLACK KEYS ARE PLAYING
 for (let i = 3; i <= octs; i++) {                   //nth child on divs to make this dryer??
     keyboardString += (`<div class="whiteKey" id="C${i}">      
-                    <div class="blackKey" id="C#${i}"></div>
+                    <div class="blackKey" id="Db${i}"></div>
                     </div>
                     <div class="whiteKey" id="D${i}">
-                    <div class="blackKey" id="D#${i}"></div>
+                    <div class="blackKey" id="Eb${i}"></div>
                     </div>
                     <div class="whiteKey" id="E${i}">
                     <div class="blackKey" id="blank1"></div>
                     </div>
                     <div class="whiteKey" id="F${i}">
-                    <div class="blackKey" id="F#${i}"></div>
+                    <div class="blackKey" id="Gb${i}"></div>
                     </div>
                     <div class="whiteKey" id="G${i}">
-                    <div class="blackKey" ID="G#${i}"></div>
+                    <div class="blackKey" ID="Ab${i}"></div>
                     </div>
                     <div class="whiteKey" id="A${i}">
-                    <div class="blackKey" id="A#${i}"></div>
+                    <div class="blackKey" id="Bb${i}"></div>
                     </div>
                     <div class="whiteKey" ID="B${i}">
                     <div class="blackKey" id="blank2"></div>
@@ -58,12 +58,10 @@ keyBoard.innerHTML = keyboardString;
 
 
 
-let metronome = document.getElementById('met-image')
-let noteTime = 8;
+let metronomePic = document.getElementById('met-image')
 
-//if (noteTime === 4) {
- //   metronome.src="assets/images/metLeft.jpg"
-//}
+    
+
 
 let metroMS = 60000 / 120; 
 console.log(metroMS);
@@ -73,8 +71,10 @@ var metRunning;
 
 metControls.addEventListener('click', function(e){
     if (e.target.id === "met-start-btn"){
-        clearTimeout(metRunning);                 //  BUG NEED TO CLEAR TIME OUT CAN LAUNCH MULTIPLE AUDIO OBJECTS ??
+        
+        clearTimeout(metRunning);
         metroFunc(metroMS);
+
         console.log(e.target.id);
     }
     else if (e.target.id === "met-stop-btn"){     //how to clear time out or stop metrofunc function??
@@ -86,10 +86,14 @@ metControls.addEventListener('click', function(e){
 
 function metroFunc(metroInterval) {
     metRunning = setTimeout(function () {
-        new Audio(`assets/images/AfricanPerc1.WAV`).play()
+        new Audio(`assets/images/AfricanPerc1.WAV`).play();
+        let tick = true;
+        tick = !tick ? metronomePic.src="assets/images/metRight.jpg" : metronomePic.src="assets/images/metLeft.jpg";
         // Then recall the outside parent function to
         // create a recursive loop.
         metroFunc(metroInterval);
+        
+        console.log(tick);
     }, metroInterval );
 
 
