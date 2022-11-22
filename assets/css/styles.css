@@ -54,8 +54,18 @@
     display: none;
 }
 
-#metImage {
+#met-image {
     height: 80px;
     border: 4px solid black;
     border-radius: 10%;
+}
+
+#mid-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mid {
+    height: 80px;
+    width: 60px;
 }

@@ -15,8 +15,17 @@
 
     <div id="pianoContainer">
         <div id="mid-controls">
-            <img src="assets/images/metUp.jpg" id="metImage" alt="metronome">
-        </div>
+            <div id="metronome">
+                <img src="assets/images/metUp.jpg" id="met-image" alt="metronome pointing up">
+            </div>
+            <div class="mid" id="met-controls">
+                <button id="met-start-btn">START</button><button id="met-stop-btn">STOP</button>
+            </div>
+            <div class="mid" id="accompany"></div>
+            <div class="mid" id="backing-track"></div>
+            <div class="mid" id="patch-controls"></div>
+            <div class="mid" id="patch"></div>
+            </div>
             <div id="key-board">                            <!--insert this html dynamically with JS
                 <div class="whiteKey" id="C3">
                     <div class="blackKey" id="C#3"></div>
@@ -104,6 +113,13 @@
                 </div>  -->
             </div>
     </div>
+
+
+
+        <!-- link to enble jQuery-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- link to use Materialize JS Script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
 
     <Script src="piano.js"></Script>
 </body>

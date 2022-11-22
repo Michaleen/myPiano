@@ -8,26 +8,22 @@ const keyBoard = document.getElementById('key-board');
     synth.triggerAttackRelease(e.target.id, "8n")
 })*/
 
-//test one C4 wav file with audio object            //TOGGLE event listener for each patch or DRYER ??, layer sounds,
-keyBoard.addEventListener('click', function(e){             //  CHORUS (LONGER NOTES) MULTIPLE KEYS AT ONCE?
-    console.log(e.target.id)
+
+//TOGGLE event listener for each patch or DRYER ??, layer sounds,
+
+keyBoard.addEventListener('click', function(e){           //  CHORUS (LONGER NOTES) MULTIPLE KEYS AT ONCE chords?
+    console.log(e.target.id)                                // nth child or data attribute number??
     console.log(e)
     new Audio(`assets/patches/denseLead/${e.target.id}.mp3`).play()
 })
       
-//var ul = $('ul.rig');
-//var count = 15; // number of images
-
-//for(var i = 1; i <= count; i++) {
- //   ul.append('<li><img src="images/' + i + '.jpg"></li>');
-//}
 
 
 let octaveNum = 6; //user input??
 let keyboardString ="";
 renderKeyBoard(octaveNum)
 
-function renderKeyBoard(octs) {                                                         // BUG NONE OF THE BLACK KEYS ARE PLAYING
+function renderKeyBoard(octs) {                    // BUG NONE OF THE BLACK KEYS ARE PLAYING
 for (let i = 3; i <= octs; i++) {                   //nth child on divs to make this dryer??
     keyboardString += (`<div class="whiteKey" id="C${i}">      
                     <div class="blackKey" id="C#${i}"></div>
@@ -50,18 +46,67 @@ for (let i = 3; i <= octs; i++) {                   //nth child on divs to make 
                     <div class="whiteKey" ID="B${i}">
                     <div class="blackKey" id="blank2"></div>
                     </div>`)
-                    console.log(i)
-                    console.log(keyboardString)
-                    console.log(octs)
+                    
 keyBoard.innerHTML = keyboardString;
+
 }};
+
+
+
+
+
+
+
+
+let metronome = document.getElementById('met-image')
+let noteTime = 8;
+
+//if (noteTime === 4) {
+ //   metronome.src="assets/images/metLeft.jpg"
+//}
+
+let metroMS = 60000 / 120; 
+console.log(metroMS);
+
+let metControls = document.getElementById('met-controls');
+var metState = false;
+
+metControls.addEventListener('click', function(e){
+    if (e.target.id === "met-start-btn"){
+    // clearTimeout(metroFunc);                   BUG NEED TO CLEAR TIME OUT CAN LAUNCH MULTIPLE AUDIO OBJECTS ??
+        metroFunc(metroMS);
+        console.log(e.target.id);
+    }
+    else if (e.target.id === "met-stop-btn"){     //how to clear time out or stop metrofunc function??
+        clearTimeout();
+        console.log(e.target.id)
+    }
+})
+
+
+function metroFunc(metroInterval) {
+    setTimeout(function () {
+        new Audio(`assets/images/AfricanPerc1.WAV`).play()
+        // Then recall the outside parent function to
+        // create a recursive loop.
+        metroFunc(metroInterval);
+    }, metroInterval );
+
+
+
+
+
+}
+
+//metroFunc(metroMS); calls recursion function for metronome
+
 
 // metronome using timeouts and audio object
 
 //MOUSE click EVENT is clunky buggy with stuck sound options?
 
 
-
+//render.com   deploy with cos can use for backend and full stack as well
 
 
 
