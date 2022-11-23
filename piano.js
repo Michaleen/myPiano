@@ -48,56 +48,55 @@ for (let i = 3; i <= octs; i++) {                   //nth child on divs to make 
                     </div>`)
                     
 keyBoard.innerHTML = keyboardString;
-
 }};
 
 
 
 
+var metroSlider = document.getElementById('metro-slider');
+var metroSliderBPM = 82;
+let metroMS = 60000 / metroSliderBPM;
+/*
+metroSlider.addEventListener("change", function() { 
+  metroSliderBPM = metroSlider.value;  
+})
+*/
 
+metroSliderBPM = setInterval(function() {
+    metroSliderBPM = metroSlider.value;
+    return metroSliderBPM;
+  }, 1)
 
-
-
-let metronomePic = document.getElementById('met-image')
-
-let metroMS = 60000 / 120; 
+let metronomePic = document.getElementById('met-image');
 let metControls = document.getElementById('met-controls');
 var metRunning;
 
 metControls.addEventListener('click', function(e){
     if (e.target.id === "met-start-btn"){
         clearTimeout(metRunning);
-        metroFunc(metroMS);
+        metroFunc(60000 / metroSliderBPM);
     }
-    else if (e.target.id === "met-stop-btn"){     //how to clear time out or stop metrofunc function??
+    else if (e.target.id === "met-stop-btn"){
         clearTimeout(metRunning);
-        console.log(e.target.id)
-    }
+        metronomePic.src="assets/images/metUp.jpg"
+    }  
+    else if (e.target.id === "metro-slider"){
+        clearTimeout(metRunning);
+        metroFunc(60000 / metroSliderBPM); 
+    } console.log(e.target.id)
 })
 
 let tick = true;
 function metroFunc(metroInterval) {
     metRunning = setTimeout(function () {
-        new Audio(`assets/images/AfricanPerc1.WAV`).play();
+        new Audio(`assets/images/metroTick.WAV`).play();
         tick = tick !== true;
         tick === true ? metronomePic.src="assets/images/metRight.jpg" : metronomePic.src="assets/images/metLeft.jpg";
-        console.log(tick)// Then recall the outside parent function to
-        // create a recursive loop.
         metroFunc(metroInterval);
-        
-        console.log(tick);
     }, metroInterval );
 }
 
-/*
-let bool = true;
 
-bool = bool !== true;
-console.log(bool); // 👉️ false
-
-bool = bool !== true;
-console.log(bool); //
-*/
 //MOUSE click EVENT is clunky buggy with stuck sound options?
 
 
