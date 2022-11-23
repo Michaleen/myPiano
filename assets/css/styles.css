@@ -34,7 +34,7 @@
     background-color: rgb(247, 226, 226);
     position: relative;
     width: 3vw;
-    height: 20vh;
+    height: 28vh;
     border: 1px solid black;
     border-radius: 0% 0% 10% 10%;
 
@@ -44,11 +44,10 @@
     background-color: black;
     position: absolute;
     width: 1.5vw;
-    height: 12vh;
+    height: 18vh;
     border-radius: 0% 0% 15% 15%;
     z-index: 2;
     left:80%;
-   
 
 }
 
@@ -79,36 +78,50 @@
     
 }
 
-#patch {
-    display: flex;
-}
-
 #accompany {
     display: flex;
     flex-direction: column;
 }
 
+#patch {
+    display: flex;
+    font-size: 34px;
+}
+
 #patch-controls {
-    width: 30px;
+    width: 26px;
     height: 60px;
     margin-right: 14px;;
 }
 
+#patch-number-div {
+    display:flex;
+    justify-content: right;
+}
 #patch-number {
     width: 60px;
-    background-color: black;
+    background-color:  rgb(131, 12, 12);
     height: 60px;
     margin-right: 14px;
+    font-size: inherit;
+    display: flex;
+    justify-content: right;
+    align-items: center;
 }
 
 #patch-name {
     width: 280px;
     background-color: rgb(131, 12, 12);
     height: 60px;
+    font-size: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:monospace ;
 }
 
 
 #up-btn, #down-btn {
-    height: 32px;
-    z-index: 12;
+    height: 30px;
+
 }

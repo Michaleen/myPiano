@@ -135,7 +135,74 @@ changePatch.addEventListener('click', function(e){
 
 
 
+///////////////////////////////MAPPING TO KEYBOARD//////////////////////////////////////////////
 
+/*keydown  for notes EVENT*/
+let keyStroke = "";
+let selectedOctave = 6;
+
+document.addEventListener('keydown', function(e){
+    switch(e.key){
+    case "a" :
+        keyStroke = "C";
+        break;
+    case "w" :
+        keyStroke = "Db";
+        break;
+    case "s" :
+        keyStroke = "D";
+        break;
+    case "e" :
+        keyStroke = "Eb";
+        break;
+    case "d" :
+        keyStroke = "E";
+        break;
+    case "f" :
+        keyStroke = "F";
+        break;
+    case "t" :
+        keyStroke = "Gb";
+        break;
+    case "g" :
+        keyStroke = "G";
+        break;
+    case "y" :
+        keyStroke = "Ab";
+        break;
+    case "h" :
+        keyStroke = "A";
+        break;
+    case "u" :
+        keyStroke = "Bb";
+        break;
+    case "j" :
+        keyStroke = "B";
+        break;
+    default :
+        keyStroke = "";
+
+        
+    }
+   
+    new Audio(`assets/patches/denseLead/${keyStroke}${selectedOctave}.mp3`).play()
+    console.log(e.key); }); 
+
+
+/*
+    case "ArrowLeft" :
+        selectedOctave = selectedOctave--;
+        console.log(selectedOctave)
+        break;
+    case "ArrowRight" :
+        selectedOctave = selectedOctave++;
+        console.log(selectedOctave)
+        break;
+    
+*/
+
+//     we tyu
+//    asd fghj   ArrowLeft  ArrowRight   ArrowUp   ArrowDown   space in blank try blank space 
 
 
 
