@@ -1,3 +1,5 @@
+///////////////////////////////////////SOUNDS////////////////////////////////////////////////////////////
+
 //creates a synth and connect it to the main output (speakers)
 const synth = new Tone.Synth().toDestination();
 const keyBoard = document.getElementById('key-board');
@@ -17,7 +19,7 @@ keyBoard.addEventListener('click', function(e){           //  CHORUS (LONGER NOT
     new Audio(`assets/patches/denseLead/${e.target.id}.mp3`).play()
 })
       
-
+////////////////////////////////KEYBOARD////////////////////////////////////////////////////////////////////////
 
 let octaveNum = 6; //user input??
 let keyboardString ="";
@@ -51,11 +53,11 @@ keyBoard.innerHTML = keyboardString;
 }};
 
 
-
+/////////////////////////////////METRONOME///////////////////////////////////////////////////
 
 var metroSlider = document.getElementById('metro-slider');
-var metroSliderBPM = 82;
-let metroMS = 60000 / metroSliderBPM;
+var metroSliderBPM = 120;
+
 /*
 metroSlider.addEventListener("change", function() { 
   metroSliderBPM = metroSlider.value;  
@@ -69,6 +71,8 @@ metroSliderBPM = setInterval(function() {
 
 let metronomePic = document.getElementById('met-image');
 let metControls = document.getElementById('met-controls');
+let metronomeSpan = document.getElementsByClassName('metronome-span');
+
 var metRunning;
 
 metControls.addEventListener('click', function(e){
@@ -81,23 +85,58 @@ metControls.addEventListener('click', function(e){
         metronomePic.src="assets/images/metUp.jpg"
     }  
     else if (e.target.id === "metro-slider"){
+        metronomeSpan.innerHTML = metroSliderBPM;     //BUG BPM DISSAPEARS AFTER LEAVING
         clearTimeout(metRunning);
-        metroFunc(60000 / metroSliderBPM); 
+        metroFunc(60000 / metroSliderBPM);
     } console.log(e.target.id)
 })
 
 let tick = true;
 function metroFunc(metroInterval) {
     metRunning = setTimeout(function () {
-        new Audio(`assets/images/metroTick.WAV`).play();
+        new Audio(`assets/images/metroTick.WAV`).play();       //split into two functions??
         tick = tick !== true;
         tick === true ? metronomePic.src="assets/images/metRight.jpg" : metronomePic.src="assets/images/metLeft.jpg";
         metroFunc(metroInterval);
     }, metroInterval );
 }
-
-
 //MOUSE click EVENT is clunky buggy with stuck sound options?
+
+
+
+
+
+
+
+/////////////////////////////ACCOMPANY CONTROLS////////////////////////////////////////////////
+
+
+/////////////////////////////BACKING TRACK controls/////////////////////////////////////////////
+
+var checks = document.querySelectorAll(".backing-selector");
+var max = 1;
+for (var i = 0; i < checks.length; i++)
+  checks[i].onclick = selectiveCheck;
+function selectiveCheck (event) {
+  var checkedChecks = document.querySelectorAll(".backing-selector:checked");
+  if (checkedChecks.length >= max + 1)
+    return false;
+}
+
+
+/////////////////////////////PATCH CONTROLS////////////////////////////////////////////////////
+
+const changePatch = document.getElementById('patch-controls');
+
+changePatch.addEventListener('click', function(e){
+    console.log(e.target.id);
+})
+
+
+
+
+
+
 
 
 //render.com   deploy with cos can use for backend and full stack as well

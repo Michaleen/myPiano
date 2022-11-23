@@ -11,12 +11,14 @@
 
 #pianoContainer {
     background-color: aquamarine;
-    border: 4px solid rgb(221, 41, 41);
+    border: 2px solid rgb(8, 8, 8);
     border-radius: 20px;
     padding: 40px 20px 4px 20px;
     width: fit-content;
+    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
+    /*box shadow*/
     
 }
 
@@ -54,18 +56,59 @@
     display: none;
 }
 
-#met-image {
-    height: 80px;
-    border: 4px solid black;
-    border-radius: 10%;
-}
+/* MIDDLE CONTROLS */
 
 #mid-controls {
     display: flex;
     justify-content: space-between;
 }
 
+#met-image {
+    height: 60px;
+    border: 4px solid black;
+    border-radius: 10%;
+}
+
+#backing-track {
+    display: flex;
+    flex-direction: column;
+}
+
 .mid {
     height: 80px;
+    
+}
+
+#patch {
+    display: flex;
+}
+
+#accompany {
+    display: flex;
+    flex-direction: column;
+}
+
+#patch-controls {
+    width: 30px;
+    height: 60px;
+    margin-right: 14px;;
+}
+
+#patch-number {
     width: 60px;
+    background-color: black;
+    height: 60px;
+    margin-right: 14px;
+}
+
+#patch-name {
+    width: 280px;
+    background-color: rgb(131, 12, 12);
+    height: 60px;
+}
+
+
+#up-btn, #down-btn {
+    height: 32px;
+    z-index: 12;
 }

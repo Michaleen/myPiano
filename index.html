@@ -22,12 +22,30 @@
                 <button id="met-start-btn">START</button><button id="met-stop-btn">STOP</button>
                 <div class="slidecontainer">
                     <input type="range" min="40" max="200" value="120" class="slider" id="metro-slider">
+                    <br>
+                    <span id="metronome-span">BPM</span>
                   </div>
             </div>
-            <div class="mid" id="accompany"></div>
-            <div class="mid" id="backing-track"></div>
-            <div class="mid" id="patch-controls"></div>
-            <div class="mid" id="patch"></div>
+            <div class="mid" id="accompany">
+                <label><input type="checkbox" class="accompany-selector" /> BASS</label>
+                <label><input type="checkbox" class="accompany-selector" /> CHORUS</label>
+                                    
+            </div>
+            <div class="mid" id="backing-track">
+                <label><input type="checkbox" class="backing-selector" /> POP</label>
+                <label><input type="checkbox" class="backing-selector" /> ROCK</label>
+                <label><input type="checkbox" class="backing-selector" /> HIP HOP</label>
+                <label><input type="checkbox" class="backing-selector" /> FOLK</label>
+                <label><input type="checkbox" class="backing-selector" /> INDIE</label>
+            </div>
+            <div class="mid" id="patch">
+                <div id="patch-controls">
+                    <div class="patch-arrow"><img src="assets/images/upButton.png" id="up-btn" alt="up button"></div>
+                    <div class="patch-arrow"><img src="assets/images/downButton.png" id="down-btn" alt="down button"></div>
+                </div>
+                <div id="patch-number"></div>
+                <div id="patch-name"></div>
+            </div>
             </div>
             <div id="key-board">                            <!--insert this html dynamically with JS
                 <div class="whiteKey" id="C3">
