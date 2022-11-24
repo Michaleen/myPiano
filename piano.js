@@ -4,20 +4,77 @@
 const synth = new Tone.Synth().toDestination();
 const keyBoard = document.getElementById('key-board');
 
-// event listener for tone JS 
-/*keyBoard.addEventListener('click', function(e){
+// event listener for tone JS
+/*
+keyBoard.addEventListener('click', function(e){
     console.log(e.target.id)
     synth.triggerAttackRelease(e.target.id, "8n")
-})*/
-
-
-//TOGGLE event listener for each patch or DRYER ??, layer sounds,
-
-keyBoard.addEventListener('click', function(e){           //  CHORUS (LONGER NOTES) MULTIPLE KEYS AT ONCE chords?
-    console.log(e.target.id)                                // nth child or data attribute number??
-    console.log(e)
-    new Audio(`assets/patches/denseLead/${e.target.id}.mp3`).play()
 })
+*/
+
+//TOGGLE event listener for each patch or DRYER ??,          layer sounds??
+
+////////////////////////////////////////SOUND BANK PATCHES/////////////////////////////////////////////////////////////////
+
+const patchesArray = ["init", "denseLead", "blah array 02","denseLead2"];     ////should/can  i dynamically populate array from teaches folder content???
+const patchControls = document.getElementById('patch-controls');
+let patchNumberDisplay = document.getElementById('patch-number-display');
+let patchName = document.getElementById('patch-name');
+var selectedPatch = 0;
+
+
+
+patchControls.addEventListener('click', function(e){
+    if (e.target.id === "patch-up-btn" && selectedPatch < (patchesArray.length - 1)){
+        selectedPatch++
+        patchNumberDisplay.innerHTML = `0${selectedPatch}`;
+        patchName.innerHTML = patchesArray[selectedPatch];
+        console.log(selectedPatch);
+    }
+    else if (e.target.id === "patch-down-btn" && selectedPatch > 0){
+            selectedPatch--;
+            patchNumberDisplay.innerHTML = `0${selectedPatch}`;
+            patchName.innerHTML = patchesArray[selectedPatch];
+            console.log(selectedPatch);
+    }    
+})
+
+////////////////////////////////////////////INIT PATCH TRIGGERS TONE JS SYNTH////////////////////////////////////////////
+
+    // event listener for tone JS 
+keyBoard.addEventListener('mousedown', function(e){
+    if(selectedPatch === 0) {
+    console.log(e.target.id)
+    synth.triggerAttackRelease(e.target.id, "8n")
+}})
+
+
+/////////////////////////////PATCH CONTROLS////////////////////////////////////////////////////
+/*using event listener up in soundbank patches line 28 ish
+const changePatch = document.getElementById('patch-controls');
+
+changePatch.addEventListener('click', function(e){
+    console.log(e.target.id);
+    selectedPatch++
+    console.log(selectedPatch)
+})
+*/
+
+
+
+
+
+
+
+
+////////////////////////////////////KEYBOARD SOUNDS/////////////////////////////////////////////////////////////
+
+keyBoard.addEventListener('click', function(e){
+    if (selectedPatch !== 0){           //  CHORUS (LONGER NOTES) MULTIPLE KEYS AT ONCE chords?
+    console.log(e.target.id)                                // nth child or data attribute number??
+    new Audio(`assets/patches/patch${selectedPatch}/denseLead/${e.target.id}.mp3`).play()
+}})                                            ///denseLead changed 
+                                        //to foler path if dynamic
       
 ////////////////////////////////KEYBOARD////////////////////////////////////////////////////////////////////////
 
@@ -94,43 +151,54 @@ metControls.addEventListener('click', function(e){
 let tick = true;
 function metroFunc(metroInterval) {
     metRunning = setTimeout(function () {
-        new Audio(`assets/images/metroTick.WAV`).play();       //split into two functions??
+        new Audio(`assets/images/metroTick.WAV`).play();
         tick = tick !== true;
         tick === true ? metronomePic.src="assets/images/metRight.jpg" : metronomePic.src="assets/images/metLeft.jpg";
         metroFunc(metroInterval);
     }, metroInterval );
 }
-//MOUSE click EVENT is clunky buggy with stuck sound options?
-
-
-
-
+//MOUSE click EVENT is clunky buggy with stuck sound options?  mousedown better maybe??
 
 
 
 /////////////////////////////ACCOMPANY CONTROLS////////////////////////////////////////////////
 
-
 /////////////////////////////BACKING TRACK controls/////////////////////////////////////////////
 
+//limit selection to only one  track at a time   
 var checks = document.querySelectorAll(".backing-selector");
 var max = 1;
 for (var i = 0; i < checks.length; i++)
-  checks[i].onclick = selectiveCheck;
+  checks[i].onclick = selectiveCheck;                //read through this again
 function selectiveCheck (event) {
   var checkedChecks = document.querySelectorAll(".backing-selector:checked");
   if (checkedChecks.length >= max + 1)
     return false;
 }
+/*
+backingTrackDiv = document.getElementById('backing-track-div');
 
-
-/////////////////////////////PATCH CONTROLS////////////////////////////////////////////////////
-
-const changePatch = document.getElementById('patch-controls');
-
-changePatch.addEventListener('click', function(e){
-    console.log(e.target.id);
+backingTrackDiv.addEventListener('mousedown', function(){
+    setTimeout (function() {
+    chosenBackingTrack = backingTrackDiv.getElementsByClassName('.backing-selector');
+    console.log(chosenBackingTrack.id);
+} , 400)
 })
+*/
+popCheckBox = document.getElementById('pop-check-box')
+rockCheckBox = document.getElementById('rock-check-box')
+hipHopCheckBox = document.getElementById('hip-hop-check-box')
+
+popCheckBox.addEventListener('click', function(e) {
+    console.log(e.target.id);
+    if (e.target.id.checked == true) {new Audio(`assets/backingTracks/pop-check-box.wav`).play()}
+    
+                // new Audio(`assets/images/metroTick.WAV`).stop()    this is a nonsense guess
+
+                //look on
+    
+})
+
 
 
 
@@ -139,7 +207,7 @@ changePatch.addEventListener('click', function(e){
 
 /*keydown  for notes EVENT*/
 let keyStroke = "";
-let selectedOctave = 6;
+let selectedOctave = 4;
 
 document.addEventListener('keydown', function(e){
     switch(e.key){
@@ -181,21 +249,29 @@ document.addEventListener('keydown', function(e){
         break;
     default :
         keyStroke = "";
-
+        
         
     }
-   
-    new Audio(`assets/patches/denseLead/${keyStroke}${selectedOctave}.mp3`).play()
-    console.log(e.key); }); 
+    
+    if (selectedPatch === 0){
+        synth.triggerAttackRelease(keyStroke + selectedOctave, "8n")
+    }    
+    else {
+        new Audio(`assets/patches/patch${selectedPatch}/denseLead/${keyStroke}${selectedOctave}.mp3`).play();
+    }
+}); 
+    
 
+
+    
 
 /*
     case "ArrowLeft" :
-        selectedOctave = selectedOctave--;
+        selectedOctave--;
         console.log(selectedOctave)
         break;
     case "ArrowRight" :
-        selectedOctave = selectedOctave++;
+        selectedOctave++;
         console.log(selectedOctave)
         break;
     

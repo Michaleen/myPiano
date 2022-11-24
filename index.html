@@ -31,22 +31,20 @@
                 <label><input type="checkbox" class="accompany-selector" /> CHORUS</label>
                                     
             </div>
-            <div class="mid" id="backing-track">
-                <label><input type="checkbox" class="backing-selector" /> POP</label>
-                <label><input type="checkbox" class="backing-selector" /> ROCK</label>
-                <label><input type="checkbox" class="backing-selector" /> HIP HOP</label>
-                <label><input type="checkbox" class="backing-selector" /> FOLK</label>
-                <label><input type="checkbox" class="backing-selector" /> INDIE</label>
+            <div class="mid" id="backing-track-div">
+                <label><input type="checkbox" class="backing-selector" id="pop-check-box" />POP</label>
+                <label><input type="checkbox" class="backing-selector" id="rock-check-box" /> ROCK</label>
+                <label><input type="checkbox" class="backing-selector" id="hip-hop-check-box" /> HIP HOP</label>
             </div>
             <div class="mid" id="patch">
                 <div id="patch-controls">
-                    <div class="patch-arrow"><img src="assets/images/upButton.png" id="up-btn" alt="up button"></div>
-                    <div class="patch-arrow"><img src="assets/images/downButton.png" id="down-btn" alt="down button"></div>
+                    <div class="patch-arrow"><img src="assets/images/upButton.png" id="patch-up-btn" alt="up button"></div>
+                    <div class="patch-arrow"><img src="assets/images/downButton.png" id="patch-down-btn" alt="down button"></div>
                 </div>
                 <div id="patch-number-div">
-                    <input id="patch-number" type="number" value="01" min="1" max="3" />
+                    <p id="patch-number-display">00</p>
                 </div>
-                <div id="patch-name">DENSE LEAD</div>
+                <div id="patch-name">INIT</div>
             </div>
             </div>
             <div id="key-board">                            <!--insert this html dynamically with JS

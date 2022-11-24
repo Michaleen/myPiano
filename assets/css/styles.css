@@ -68,7 +68,7 @@
     border-radius: 10%;
 }
 
-#backing-track {
+#backing-track-div {
     display: flex;
     flex-direction: column;
 }
@@ -85,7 +85,7 @@
 
 #patch {
     display: flex;
-    font-size: 34px;
+    font-size: 38px;
 }
 
 #patch-controls {
@@ -96,17 +96,15 @@
 
 #patch-number-div {
     display:flex;
-    justify-content: right;
-}
-#patch-number {
+    justify-content:center;
     width: 60px;
-    background-color:  rgb(131, 12, 12);
+    background-color:  rgb(148, 4, 76);
     height: 60px;
     margin-right: 14px;
     font-size: inherit;
     display: flex;
-    justify-content: right;
     align-items: center;
+
 }
 
 #patch-name {
@@ -115,13 +113,14 @@
     height: 60px;
     font-size: inherit;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    font-family:monospace ;
+    font-family: monospace;
+    padding-left: 8px;
 }
 
 
-#up-btn, #down-btn {
+#patch-up-btn, #patch-down-btn {
     height: 30px;
 
 }
