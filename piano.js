@@ -44,7 +44,6 @@ patchControls.addEventListener('click', function(e){
     // event listener for tone JS 
 keyBoard.addEventListener('mousedown', function(e){
     if(selectedPatch === 0) {
-    console.log(e.target.id)
     synth.triggerAttackRelease(e.target.id, "8n")
 }})
 
@@ -70,11 +69,10 @@ changePatch.addEventListener('click', function(e){
 ////////////////////////////////////KEYBOARD SOUNDS/////////////////////////////////////////////////////////////
 
 keyBoard.addEventListener('click', function(e){
-    if (selectedPatch !== 0){           //  CHORUS (LONGER NOTES) MULTIPLE KEYS AT ONCE chords?
-    console.log(e.target.id)                                // nth child or data attribute number??
+    if (selectedPatch !== 0){           //  CHORUS (LONGER NOTES) MULTIPLE KEYS AT ONCE chords? // nth child or data attribute number??
     new Audio(`assets/patches/patch${selectedPatch}/denseLead/${e.target.id}.mp3`).play()
-}})                                            ///denseLead changed 
-                                        //to foler path if dynamic
+}})                                               //denselead
+                                        //to folder path if dynamic
       
 ////////////////////////////////KEYBOARD////////////////////////////////////////////////////////////////////////
 
@@ -172,7 +170,44 @@ const rockTrack = document.getElementById('rock-track');
 const hipHopTrack = document.getElementById('hip-hop-track');
 const folkTrack = document.getElementById('folk-track');
 
+const backingTrackDiv = document.getElementById('backing-track-div');
+
+backingTrackDiv.addEventListener('click', function(e){
+    if (e.target.id === 'pop-btn') {
+        togglePlay(popTrack);
+    }
+    else if (e.target.id === 'rock-btn') {
+        togglePlay(rockTrack);
+    }    
+    else if (e.target.id === 'hip-hop-btn') {
+        togglePlay(hipHopTrack);
+    }
+    else if (e.target.id === 'folk-btn') {
+        togglePlay(folkTrack);
+    }
+})
+
 function togglePlay(song) {
+    if (song === popTrack){
+        rockTrack.pause();              //HOW to DRY THIS UP??
+        hipHopTrack.pause();
+        folkTrack.pause();
+    }
+    else if (song === rockTrack){
+        popTrack.pause();
+        hipHopTrack.pause();
+        folkTrack.pause();
+    }
+    else if (song === hipHopTrack){
+        rockTrack.pause();
+        popTrack.pause();
+        folkTrack.pause();
+    }
+    else if (song === folkTrack){
+        rockTrack.pause();
+        hipHopTrack.pause();
+        popTrack.pause();
+    }
   return song.paused ? song.play() : song.pause();
 };
 

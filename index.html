@@ -15,7 +15,7 @@
 
     <div id="pianoContainer">
         <div id="mid-controls">
-            <div id="metronome">
+            <div id="metronome">                                                                <!--METRONOME-->
                 <img src="assets/images/metUp.jpg" id="met-image" alt="metronome pointing up">
             </div>
             <div class="mid" id="met-controls">
@@ -25,23 +25,22 @@
                     <br>
                     <span id="metronome-span">BPM</span>
                   </div>
-            </div>
+            </div>                                                                             <!--ACCOMPANY-->
             <div class="mid" id="accompany">
                 <label><input type="checkbox" class="accompany-selector" /> BASS</label>
                 <label><input type="checkbox" class="accompany-selector" /> CHORUS</label>
-                                    
             </div>
-            <div class="mid" id="backing-track-div">
-                <button id="pop-btn" onClick="togglePlay(popTrack)">POP</button>
+            <div class="mid" id="backing-track-div">                                          <!--BACKING TRACK-->
+                <button id="pop-btn">POP</button>
                 <audio id="pop-track" src="assets/backingTracks/pop-check-box.wav" preload="auto" loop></audio>
-                <button id="rock-btn" onClick="togglePlay(rockTrack)">ROCK</button>
+                <button id="rock-btn">ROCK</button>
                 <audio id="rock-track" src="assets/backingTracks/climatic-drum-groove-heavy-rock_140bpm.wav" preload="auto" loop></audio>
-                <button id="hip-hop-btn" onClick="togglePlay(hipHopTrack)">HIP HOP</button>
+                <button id="hip-hop-btn">HIP HOP</button>
                 <audio id="hip-hop-track" src="assets/backingTracks/oldschool-beat_88bpm.wav" preload="auto" loop></audio>
-                <button id="folk-btn" onClick="togglePlay(folkTrack)">FOLK</button>
+                <button id="folk-btn">FOLK</button>
                 <audio id="folk-track" src="assets/backingTracks/plucked-strings-melody-smooth-guitar-loop_50bpm_E.wav" preload="auto" loop></audio>
             </div>
-            <div class="mid" id="patch">
+            <div class="mid" id="patch">                                                         <!--PATCH-->
                 <div id="patch-controls">
                     <div class="patch-arrow"><img src="assets/images/upButton.png" id="patch-up-btn" alt="up button"></div>
                     <div class="patch-arrow"><img src="assets/images/downButton.png" id="patch-down-btn" alt="down button"></div>
@@ -51,8 +50,8 @@
                 </div>
                 <div id="patch-name">INIT</div>
             </div>
-            </div>
-            <div id="key-board">                            <!--insert this html dynamically with JS
+            </div>                                                                            <!--KEYBOARD-->
+            <div id="key-board">                                              <!--insert this html dynamically with JS-->
                 <div class="whiteKey" id="C3">
                     <div class="blackKey" id="C#3"></div>
                 </div>
