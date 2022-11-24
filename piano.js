@@ -1,7 +1,7 @@
 ///////////////////////////////////////SOUNDS////////////////////////////////////////////////////////////
 
 //creates a synth and connect it to the main output (speakers)
-const synth = new Tone.Synth().toDestination();
+const synth = new Tone.PolySynth().toDestination();
 const keyBoard = document.getElementById('key-board');
 
 // event listener for tone JS
@@ -165,16 +165,39 @@ function metroFunc(metroInterval) {
 
 /////////////////////////////BACKING TRACK controls/////////////////////////////////////////////
 
-//limit selection to only one  track at a time   
+
+
+const popTrack = document.getElementById('pop-track');
+const rockTrack = document.getElementById('rock-track');
+const hipHopTrack = document.getElementById('hip-hop-track');
+const folkTrack = document.getElementById('folk-track');
+
+function togglePlay(song) {
+  return song.paused ? song.play() : song.pause();
+};
+
+
+/*
+
+function togglePlay(song) {
+    return song.paused ? song.play() : song.pause();
+  };
+*/
+
+
+
+//limit selection to only one  track at a time   this block was for using check boxes instead i use button now
+/*
 var checks = document.querySelectorAll(".backing-selector");
 var max = 1;
-for (var i = 0; i < checks.length; i++)
-  checks[i].onclick = selectiveCheck;                //read through this again
-function selectiveCheck (event) {
+for (var i = 0; i < checks.length; i++)                 // function infinite loop:
+  checks[i].onclick = selectiveCheck;                //if (!understand && brain is overheating) { read through again; will defo figure it out next time around;};
+function selectiveCheck (event) {                       // else {your in denial, brain probably melted; readthrough again}
   var checkedChecks = document.querySelectorAll(".backing-selector:checked");
   if (checkedChecks.length >= max + 1)
     return false;
 }
+*/
 /*
 backingTrackDiv = document.getElementById('backing-track-div');
 
@@ -185,6 +208,7 @@ backingTrackDiv.addEventListener('mousedown', function(){
 } , 400)
 })
 */
+/*
 popCheckBox = document.getElementById('pop-check-box')
 rockCheckBox = document.getElementById('rock-check-box')
 hipHopCheckBox = document.getElementById('hip-hop-check-box')
@@ -195,11 +219,11 @@ popCheckBox.addEventListener('click', function(e) {
     
                 // new Audio(`assets/images/metroTick.WAV`).stop()    this is a nonsense guess
 
-                //look on
+  
     
 })
 
-
+*/
 
 
 

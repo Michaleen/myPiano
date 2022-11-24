@@ -21,7 +21,7 @@
             <div class="mid" id="met-controls">
                 <button id="met-start-btn">START</button><button id="met-stop-btn">STOP</button>
                 <div class="slidecontainer">
-                    <input type="range" min="40" max="200" value="120" class="slider" id="metro-slider">
+                    <input type="range" min="40" max="200" value="150" class="slider" id="metro-slider">
                     <br>
                     <span id="metronome-span">BPM</span>
                   </div>
@@ -32,9 +32,14 @@
                                     
             </div>
             <div class="mid" id="backing-track-div">
-                <label><input type="checkbox" class="backing-selector" id="pop-check-box" />POP</label>
-                <label><input type="checkbox" class="backing-selector" id="rock-check-box" /> ROCK</label>
-                <label><input type="checkbox" class="backing-selector" id="hip-hop-check-box" /> HIP HOP</label>
+                <button id="pop-btn" onClick="togglePlay(popTrack)">POP</button>
+                <audio id="pop-track" src="assets/backingTracks/pop-check-box.wav" preload="auto" loop></audio>
+                <button id="rock-btn" onClick="togglePlay(rockTrack)">ROCK</button>
+                <audio id="rock-track" src="assets/backingTracks/climatic-drum-groove-heavy-rock_140bpm.wav" preload="auto" loop></audio>
+                <button id="hip-hop-btn" onClick="togglePlay(hipHopTrack)">HIP HOP</button>
+                <audio id="hip-hop-track" src="assets/backingTracks/oldschool-beat_88bpm.wav" preload="auto" loop></audio>
+                <button id="folk-btn" onClick="togglePlay(folkTrack)">FOLK</button>
+                <audio id="folk-track" src="assets/backingTracks/plucked-strings-melody-smooth-guitar-loop_50bpm_E.wav" preload="auto" loop></audio>
             </div>
             <div class="mid" id="patch">
                 <div id="patch-controls">
@@ -135,7 +140,8 @@
             </div>
     </div>
 
-
+    
+    
 
         <!-- link to enble jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
