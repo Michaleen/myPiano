@@ -11,7 +11,7 @@
 }
 
 #pianoContainer {
-    background-color: rgb(73, 153, 8);
+    background-color: rgb(9, 214, 9);
     border: 2px solid rgb(8, 8, 8);
     border-radius: 20px;
     padding: 40px 20px 4px 20px;
@@ -103,21 +103,24 @@
 #patch-number-div {
     display:flex;
     justify-content:center;
-    width: 60px;
-    color: blue;
+    width: 68px;
+    color: rgb(173, 44, 11);
     background-color: black;
     height: 60px;
     margin-right: 14px;
-    font-size: inherit;
+    font-size: 32px;
     font-family: inherit;
     display: flex;
     align-items: center;
+    padding-top: 8px;
 
 }
 
 #patch-name {
-    width: 280px;
-    color: blue;
+    width: 380px;
+    /*color: blue;*/
+    color: #17d4fe;
+    letter-spacing: 8px;
     background-color: black;
     height: 60px;
     font-size: inherit;

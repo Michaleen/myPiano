@@ -69,12 +69,6 @@ keyBoard.addEventListener('click', function(e){
 )
 
 
-/*
-if (isBassChecked === true){
-    
-*/
-//bassOctave = Number(e.target.id.slice(-1)) - 2;
-//console.log(bassOctave);
 
 ////////////////////////////////////////////INIT PATCH TRIGGERS TONE JS SYNTH////////////////////////////////////////////
 
@@ -300,7 +294,7 @@ popCheckBox.addEventListener('click', function(e) {
 
 /*keydown  for notes EVENT*/
 let keyStroke = "";
-var selectedOctave = 5;
+var selectedOctave = 6;
 
 document.addEventListener('keydown', function(e){
     switch(e.key){
@@ -346,14 +340,24 @@ document.addEventListener('keydown', function(e){
         
     }
     
-    if (selectedPatch === 0){
+    if ((selectedPatch === 0) && bassCheckbox.checked){
+        synth.triggerAttackRelease(keyStroke + Number((selectedOctave) - 3)," 8n");
+        synth.triggerAttackRelease(keyStroke + selectedOctave, "8n");
+       
+    } 
+    else if ((selectedPatch === 0) && (bassCheckbox.checked === false)) {
         synth.triggerAttackRelease(keyStroke + selectedOctave, "8n")
     }    
+    else if ((selectedPatch !== 0) && bassCheckbox.checked) { 
+        new Audio(`assets/patches/patch${selectedPatch}/denseLead/${keyStroke}${selectedOctave}.mp3`).play();
+        new Audio(`assets/patches/patch${selectedPatch}/denseLead/${keyStroke}${Number(selectedOctave) - 3}.mp3`).play();
+    }
     else {
         new Audio(`assets/patches/patch${selectedPatch}/denseLead/${keyStroke}${selectedOctave}.mp3`).play();
     }
-}); 
-    
+});
+
+
 
 //keydown for octave change
 document.addEventListener('keydown', function(e){
