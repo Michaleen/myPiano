@@ -16,7 +16,7 @@ keyBoard.addEventListener('click', function(e){
 
 ////////////////////////////////////////SOUND BANK PATCHES/////////////////////////////////////////////////////////////////
 
-const patchesArray = ["init", "denseLead", "blah array 02","denseLead2"];     ////should/can  i dynamically populate array from teaches folder content???
+const patchesArray = ["init", "denseLead", "empty debug","denseLead2"];     ////should/can  i dynamically populate array from teaches folder content???
 const patchControls = document.getElementById('patch-controls');
 let patchNumberDisplay = document.getElementById('patch-number-display');
 let patchName = document.getElementById('patch-name');
@@ -29,13 +29,11 @@ patchControls.addEventListener('click', function(e){
         selectedPatch++
         patchNumberDisplay.innerHTML = `0${selectedPatch}`;
         patchName.innerHTML = patchesArray[selectedPatch];
-        console.log(selectedPatch);
     }
     else if (e.target.id === "patch-down-btn" && selectedPatch > 0){
             selectedPatch--;
             patchNumberDisplay.innerHTML = `0${selectedPatch}`;
             patchName.innerHTML = patchesArray[selectedPatch];
-            console.log(selectedPatch);
     }    
 })
 
@@ -81,7 +79,7 @@ let keyboardString ="";
 renderKeyBoard(octaveNum)
 
 function renderKeyBoard(octs) {
-for (let i = 3; i <= octs; i++) {                   //nth child on divs to make this dryer??
+for (let i = 3; i <= octs; i++) {                   //nth child on divs to make this even dryer??
     keyboardString += (`<div class="whiteKey" id="C${i}">      
                     <div class="blackKey" id="Db${i}"></div>
                     </div>
@@ -132,7 +130,7 @@ var metRunning;
 
 metControls.addEventListener('click', function(e){
     if (e.target.id === "met-start-btn"){
-        clearTimeout(metRunning);
+        clearTimeout(metRunning);                 //which condition to reduce to one button?????????
         metroFunc(60000 / metroSliderBPM);
     }
     else if (e.target.id === "met-stop-btn"){
@@ -140,7 +138,7 @@ metControls.addEventListener('click', function(e){
         metronomePic.src="assets/images/metUp.jpg"
     }  
     else if (e.target.id === "metro-slider"){
-        metronomeSpan.innerHTML = metroSliderBPM;     //BUG BPM DISSAPEARS AFTER LEAVING
+        metronomeSpan.innerHTML = metroSliderBPM;
         clearTimeout(metRunning);
         metroFunc(60000 / metroSliderBPM);
     } console.log(e.target.id)
@@ -266,7 +264,7 @@ popCheckBox.addEventListener('click', function(e) {
 
 /*keydown  for notes EVENT*/
 let keyStroke = "";
-let selectedOctave = 4;
+var selectedOctave = 5;
 
 document.addEventListener('keydown', function(e){
     switch(e.key){
@@ -321,11 +319,26 @@ document.addEventListener('keydown', function(e){
 }); 
     
 
-
+//keydown for octave change
+document.addEventListener('keydown', function(e){
+    if (e.key === "ArrowRight" && selectedOctave < 6) {
+        selectedOctave++;
+        console.log(selectedOctave)
+    }    
+    else if (e.key === "ArrowLeft" && selectedOctave > 3) {
+        selectedOctave--;
+        console.log(selectedOctave);
+    }
+    })
     
 
-/*
-    case "ArrowLeft" :
+/* octave selector attempt 1
+ document.addEventListener('keydown', function(e){
+    switch(e.key){
+    case C:
+        switch(selectedOctave){
+            case selectedOctave > 3 :
+        }
         selectedOctave--;
         console.log(selectedOctave)
         break;
@@ -333,11 +346,30 @@ document.addEventListener('keydown', function(e){
         selectedOctave++;
         console.log(selectedOctave)
         break;
+        default :
+        keyStroke = "";
+    }
+});
     
 */
 
-//     we tyu
-//    asd fghj   ArrowLeft  ArrowRight   ArrowUp   ArrowDown   space in blank try blank space 
+ /*octave selector  attempt 2
+ document.addEventListener('keydown', function(e){
+    switch(true){   
+    case ("ArrowLeft" === 1)/* && (selectedOctave > 3) :
+    selectedOctave--
+    console.log(selectedOctave)
+    break;
+    case ("ArrowRight" === 1) /*&& (selectedOctave > 3) :
+    selectedOctave++
+    console.log(selectedOctave)
+    break;
+    }
+});
+
+*/
+
+//ArrowLeft  ArrowRight   ArrowUp   ArrowDown   space in blank try blank space 
 
 
 
