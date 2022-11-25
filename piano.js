@@ -37,13 +37,53 @@ patchControls.addEventListener('click', function(e){
     }    
 })
 
+///////////////////////////////////////////BASS SWITCH//////////////////////////////////////////////////////////
+let bassCheckbox = document.getElementById('bass-checkbox');
+let bassOctave = 0;
+let isBassChecked = false;
+noteNoOctave = "";
+
+/*
+
+bassCheckbox.addEventListener('click', function(){
+    bassCheck()
+})
+*/
+
+function bassCheck(note) {
+    if (bassCheckbox.checked) {
+        bassOctave = Number(note.slice(-1)) - 3;
+        noteNoOctave = note.slice(0, -1);
+        console.log(bassOctave);
+        console.log(noteNoOctave);
+        console.log(note);
+        synth.triggerAttackRelease(noteNoOctave + bassOctave, "8n")
+    }}
+
+
+
+
+keyBoard.addEventListener('click', function(e){
+    bassCheck(e.target.id);
+    }
+)
+
+
+/*
+if (isBassChecked === true){
+    
+*/
+//bassOctave = Number(e.target.id.slice(-1)) - 2;
+//console.log(bassOctave);
+
 ////////////////////////////////////////////INIT PATCH TRIGGERS TONE JS SYNTH////////////////////////////////////////////
 
     // event listener for tone JS 
 keyBoard.addEventListener('mousedown', function(e){
     if(selectedPatch === 0) {
     synth.triggerAttackRelease(e.target.id, "8n")
-}})
+    }
+})
 
 
 /////////////////////////////PATCH CONTROLS////////////////////////////////////////////////////
@@ -74,7 +114,7 @@ keyBoard.addEventListener('click', function(e){
       
 ////////////////////////////////KEYBOARD////////////////////////////////////////////////////////////////////////
 
-let octaveNum = 6; //user input??
+let octaveNum = 6; //       user input??  NEED TO RENDER TO A DISPLAY AS WELL !!!!!!!!!!!
 let keyboardString ="";
 renderKeyBoard(octaveNum)
 
@@ -111,11 +151,7 @@ keyBoard.innerHTML = keyboardString;
 var metroSlider = document.getElementById('metro-slider');
 var metroSliderBPM = 120;
 
-/*
-metroSlider.addEventListener("change", function() { 
-  metroSliderBPM = metroSlider.value;  
-})
-*/
+
 
 metroSliderBPM = setInterval(function() {
     metroSliderBPM = metroSlider.value;
@@ -131,7 +167,7 @@ var metRunning;
 metControls.addEventListener('click', function(e){
     if (e.target.id === "met-start-btn"){
         clearTimeout(metRunning);                 //which condition to reduce to one button?????????
-        metroFunc(60000 / metroSliderBPM);
+        metroFunc(60000 / metroSliderBPM);      // NEED ANOTHER TOGGLE FUNC SO JUST ONE BUTOON  (IS CHECKED ON CHECKBOX)
     }
     else if (e.target.id === "met-stop-btn"){
         clearTimeout(metRunning);

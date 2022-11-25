@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets\css\styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js" 
             integrity="sha512-jduERlz7En1IUZR54bqzpNI64AbffZWR//KJgF71SJ8D8/liKFZ+s1RxmUmB+bhCnIfzebdZsULwOrbVB5f3nQ==" 
@@ -16,8 +16,8 @@
             referrerpolicy="no-referrer"></script>
 </head>
 <body>
-    <h1 class="animate__animated animate__bounce">An animated element</h1>
-    <div id="pianoContainer">
+    <h1 class="animate__animated animate__flash">SYNTHESIZE ME</h1>
+    <div class="animate__animated animate__fadeInDown" id="pianoContainer">
         <div id="mid-controls">
             <div id="metronome">                                                                <!--METRONOME-->
                 <img src="assets/images/metUp.jpg" id="met-image" alt="metronome pointing up">
@@ -31,8 +31,8 @@
                   </div>
             </div>                                                                             <!--ACCOMPANY-->
             <div class="mid" id="accompany">
-                <label><input type="checkbox" class="accompany-selector" /> BASS</label>
-                <label><input type="checkbox" class="accompany-selector" /> CHORUS</label>
+                <label><input type="checkbox" class="accompany-selector" id="bass-checkbox"/> BASS</label>
+                <label><input type="checkbox" class="accompany-selector" id="chords-checkbox"/> CHORDS</label>
             </div>
             <div class="mid" id="backing-track-div">                                          <!--BACKING TRACK-->
                 <button id="pop-btn">POP</button>
@@ -143,7 +143,7 @@
             </div>
     </div>
 
---> 
+
     
 
         <!-- link to enble jQuery-->
