@@ -93,12 +93,12 @@ for (let i = 3; i <= octs; i++) {                   //nth child on divs to make 
                     <div class="blackKey" id="Gb${i}"></div>
                     </div>
                     <div class="whiteKey" id="G${i}">
-                    <div class="blackKey" ID="Ab${i}"></div>
+                    <div class="blackKey" Id="Ab${i}"></div>
                     </div>
                     <div class="whiteKey" id="A${i}">
-                    <div class="blackKey" id="Bb${i}"></div>
+                    <div class="blackKey" Id="Bb${i}"></div>
                     </div>
-                    <div class="whiteKey" ID="B${i}">
+                    <div class="whiteKey" Id="B${i}">
                     <div class="blackKey" id="blank2"></div>
                     </div>`)
                     
