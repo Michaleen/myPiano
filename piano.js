@@ -153,25 +153,29 @@ metroSliderBPM = setInterval(function() {
   }, 1)
 
 let metronomePic = document.getElementById('met-image');
-let metControls = document.getElementById('met-controls');
+let metSlider = document.getElementById('metro-slider');
 let metronomeSpan = document.getElementsByClassName('metronome-span');
 
 var metRunning;
 
-metControls.addEventListener('click', function(e){
-    if (e.target.id === "met-start-btn"){
-        clearTimeout(metRunning);                 //which condition to reduce to one button?????????
-        metroFunc(60000 / metroSliderBPM);      // NEED ANOTHER TOGGLE FUNC SO JUST ONE BUTOON  (IS CHECKED ON CHECKBOX)
-    }
-    else if (e.target.id === "met-stop-btn"){
-        clearTimeout(metRunning);
-        metronomePic.src="assets/images/metUp.jpg"
-    }  
-    else if (e.target.id === "metro-slider"){
-        metronomeSpan.innerHTML = metroSliderBPM;
+/*    THESE TWO CONDITIONS WERE PREVIOUSLY INSIDE THE METCONTROLS EVENT LISTENER FOR THE METRONOME START AND STOP BUTTONS
+if (e.target.id === "met-start-btn"){
+    clearTimeout(metRunning);                 //which condition to reduce to one button?????????
+    metroFunc(60000 / metroSliderBPM);      // NEED ANOTHER TOGGLE FUNC SO JUST ONE BUTOON  (IS CHECKED ON CHECKBOX)
+}
+else if (e.target.id === "met-stop-btn"){
+    clearTimeout(metRunning);
+    metronomePic.src="assets/images/metUp.jpg"
+}  
+else 
+*/
+
+
+metSlider.addEventListener('click', function(){
+        metronomeSpan.innerHTML = metroSliderBPM;  //NOW CHANGE THIS TO JUST EVENT LISTENER ON JUST "metro-slider"
         clearTimeout(metRunning);
         metroFunc(60000 / metroSliderBPM);
-    } console.log(e.target.id)
+       
 })
 
 let tick = true;
@@ -183,6 +187,32 @@ function metroFunc(metroInterval) {
         metroFunc(metroInterval);
     }, metroInterval );
 }
+
+
+
+let metronomeToggleButton = document.getElementById('metronome-toggle-btn')
+var flipperBool = false;
+
+metronomeToggleButton.addEventListener('click', function(){
+       
+    flipperBool = flipperBool !== true;
+    console.log(flipperBool)
+    if (flipperBool === true){
+        clearTimeout(metRunning);                 //which condition to reduce to one button?????????
+        metroFunc(60000 / metroSliderBPM);
+        console.log(flipperBool);
+    }
+    else if (flipperBool === false){
+        clearTimeout(metRunning);
+        metronomePic.src="assets/images/metUp.jpg"
+        console.log(flipperBool);
+    }
+
+})
+
+
+
+
 //MOUSE click EVENT is clunky buggy with stuck sound options?  mousedown better maybe??
 
 
@@ -369,7 +399,17 @@ document.addEventListener('keydown', function(e){
         selectedOctave--;
         console.log(selectedOctave);
     }
-    })
+    else if (e.key === "ArrowUp" && selectedPatch < (patchesArray.length - 1)){
+        selectedPatch++
+        patchNumberDisplay.innerHTML = `0${selectedPatch}`;
+        patchName.innerHTML = patchesArray[selectedPatch];
+    }
+    else if (e.key === "ArrowDown" && selectedPatch > 0){
+        selectedPatch--
+        patchNumberDisplay.innerHTML = `0${selectedPatch}`;
+        patchName.innerHTML = patchesArray[selectedPatch];
+    }
+})
     
 
 /* octave selector attempt 1
