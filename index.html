@@ -16,7 +16,6 @@
             referrerpolicy="no-referrer"></script>
 </head>
 <body>
-    <button id="metronome-toggle-btn">METRONOME TOGGLE</button>
     <h1 class="animate__animated animate__flash">SYNTHESIZE ME</h1>
     <div class="animate__animated animate__fadeInDown" id="pianoContainer">
         <div id="mid-controls">
@@ -24,7 +23,7 @@
                 <img src="assets/images/metUp.jpg" id="met-image" alt="metronome pointing up">
             </div>
             <div class="mid" id="met-controls">
-                <button id="met-start-btn">START</button><button id="met-stop-btn">STOP</button>
+                <button id="metronome-toggle-btn" class="neon-button">METRONOME</button>
                 <div class="slidecontainer">
                     <input type="range" min="40" max="200" value="150" class="slider" id="metro-slider">
                     <br>
@@ -36,13 +35,13 @@
                 <label><input type="checkbox" class="accompany-selector" id="chords-checkbox"/> CHORDS</label>
             </div>
             <div class="mid" id="backing-track-div">                                          <!--BACKING TRACK-->
-                <button id="pop-btn">POP</button>
-                <audio id="pop-track" src="assets/backingTracks/pop-check-box.wav" preload="auto" loop></audio>
-                <button id="rock-btn">ROCK</button>
+                <button id="pop-btn" class="neon-button">POP</button>
+                <audio id="pop-track"src="assets/backingTracks/pop-check-box.wav" preload="auto" loop></audio>
+                <button id="rock-btn" class="neon-button">ROCK</button>
                 <audio id="rock-track" src="assets/backingTracks/climatic-drum-groove-heavy-rock_140bpm.wav" preload="auto" loop></audio>
-                <button id="hip-hop-btn">HIP HOP</button>
+                <button id="hip-hop-btn" class="neon-button">FUNK</button>
                 <audio id="hip-hop-track" src="assets/backingTracks/oldschool-beat_88bpm.wav" preload="auto" loop></audio>
-                <button id="folk-btn">FOLK</button>
+                <button id="folk-btn" class="neon-button">FOLK</button>
                 <audio id="folk-track" src="assets/backingTracks/plucked-strings-melody-smooth-guitar-loop_50bpm_E.wav" preload="auto" loop></audio>
             </div>
             <div class="mid" id="patch">                                                         <!--PATCH-->
@@ -53,7 +52,7 @@
                 <div id="patch-number-div">
                     <p id="patch-number-display">00</p>
                 </div>
-                <div id="patch-name">INIT</div>
+                <div id="patch-name">init</div>
             </div>
             </div>                                                                             <!--KEYBOARD-->
             <div id="key-board">                                        <!--dry up this dynamically with JS-->

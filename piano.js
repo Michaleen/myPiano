@@ -42,14 +42,11 @@ let bassCheckbox = document.getElementById('bass-checkbox');
 let bassOctave = 0;
 let isBassChecked = false;
 noteNoOctave = "";
-
 /*
-
 bassCheckbox.addEventListener('click', function(){
     bassCheck()
 })
 */
-
 function bassCheck(note) {
     if (bassCheckbox.checked) {
         bassOctave = Number(note.slice(-1)) - 3;
@@ -59,9 +56,6 @@ function bassCheck(note) {
         console.log(note);
         synth.triggerAttackRelease(noteNoOctave + bassOctave, "8n")
     }}
-
-
-
 
 keyBoard.addEventListener('click', function(e){
     bassCheck(e.target.id);
@@ -172,7 +166,7 @@ else
 
 
 metSlider.addEventListener('click', function(){
-        metronomeSpan.innerHTML = metroSliderBPM;  //NOW CHANGE THIS TO JUST EVENT LISTENER ON JUST "metro-slider"
+        metronomeSpan.innerHTML = metroSliderBPM;
         clearTimeout(metRunning);
         metroFunc(60000 / metroSliderBPM);
        
@@ -198,7 +192,7 @@ metronomeToggleButton.addEventListener('click', function(){
     flipperBool = flipperBool !== true;
     console.log(flipperBool)
     if (flipperBool === true){
-        clearTimeout(metRunning);                 //which condition to reduce to one button?????????
+        clearTimeout(metRunning);
         metroFunc(60000 / metroSliderBPM);
         console.log(flipperBool);
     }

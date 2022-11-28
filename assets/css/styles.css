@@ -1,4 +1,76 @@
 :root {
+    --clr-neon: rgb(20, 141, 255);
+    --clr-bg: hsl(323 21% 16%);
+  }
+  
+  
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  .neon-button {
+    font-size: 12px;
+  
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.5em;
+  
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+  
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+  
+    position: relative;
+  }
+  
+  .neon-button::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    
+    filter: blur(1em);
+    opacity: 0.4;
+  }
+  
+  .neon-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    opacity: 0;
+    background-color: var(--clr-neon);
+    z-index: -1;
+    transition: opacity 100ms linear;
+  }
+  
+  .neon-button:hover,
+  .neon-button:focus {
+    color: var(--clr-bg);
+    text-shadow: none;
+  }
+  
+  .neon-button:hover::before,
+  .neon-button:focus::before {
+    opacity: .3;
+  }
+  .neon-button:hover::after,
+  .neon-button:focus::after {
+    opacity: 1;
+  }
+  
+:root {
     background-color: rgb(228, 103, 30);
     margin: 0;
     padding: 0;
@@ -58,6 +130,11 @@
 
 /* MIDDLE CONTROLS */
 
+.mid {
+  height: 80px;
+  
+}
+
 #mid-controls {
     display: flex;
     justify-content: space-between;
@@ -69,14 +146,8 @@
     border-radius: 10%;
 }
 
-#backing-track-div {
-    display: flex;
-    flex-direction: column;
-}
-
-.mid {
-    height: 80px;
-    
+#metronome-span {
+  font-weight: bold;
 }
 
 #accompany {
@@ -84,27 +155,33 @@
     flex-direction: column;
 }
 
+#accompany {
+  font-weight: bold;
+}
+
 #backing-track-div {
     display: flex;
     flex-direction: row;
+    border-radius: 10px;
+    height: 32px;
 }
 #patch {
     display: flex;
-    font-size: 38px;
     font-family: 'Orbitron', sans-serif;
 }
 
 #patch-controls {
-    width: 26px;
+  width: 20px;
     height: 60px;
-    margin-right: 14px;;
+    margin-right: 14px;
+    
 }
 
 #patch-number-div {
     display:flex;
     justify-content:center;
     width: 68px;
-    color: rgb(173, 44, 11);
+    color: var(--clr-neon);
     background-color: black;
     height: 60px;
     margin-right: 14px;
@@ -113,13 +190,16 @@
     display: flex;
     align-items: center;
     padding-top: 8px;
+    border-radius: 5px;
+    border: 4px solid green;
 
 }
 
 #patch-name {
     width: 380px;
     /*color: blue;*/
-    color: #17d4fe;
+    /*color: #17d4fe;*/
+    color: var(--clr-neon);
     letter-spacing: 8px;
     background-color: black;
     height: 60px;
@@ -129,11 +209,14 @@
     align-items: center;
     font-family: inherit;
     padding-left: 8px;
+    border-radius: 5px;
+    border: 4px solid green;
+    font-size: 38px;
 }
 
 
 #patch-up-btn, #patch-down-btn {
-    height: 30px;
+  height: 30px;
 
 }
 
