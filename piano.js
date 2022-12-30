@@ -37,6 +37,7 @@ patchControls.addEventListener('click', function(e){
     }    
 })
 
+
 ///////////////////////////////////////////ADDING A BASS NOTE//////////////////////////////////////////////////////////
 
 const bassCheckbox = document.getElementById('bass-checkbox');
@@ -95,7 +96,7 @@ changePatch.addEventListener('click', function(e){
 
 ////////////////////////////////////KEYBOARD SOUNDS/////////////////////////////////////////////////////////////
 
-keyBoard.addEventListener('click', function(e){
+keyBoard.addEventListener('mousedown', function(e){
     if (selectedPatch !== 0){           //  CHORUS (LONGER NOTES) MULTIPLE KEYS AT ONCE chords? // nth child or data attribute number??
     new Audio(`assets/patches/patch${selectedPatch}/denseLead/${e.target.id}.mp3`).play()
 }})                                               //denselead
@@ -116,7 +117,7 @@ for (let i = 3; i <= octs; i++) {                   //3nth 7nt child or modulus 
                             <div class="blackKey" id="Eb${i}"></div>
                         </div>
                         <div class="whiteKey" id="E${i}">
-                            <div class="blackKey" id="blank1"></div>
+                            <div class="blackKey" id="blank-sharp-1"></div>
                         </div>
                         <div class="whiteKey" id="F${i}">
                             <div class="blackKey" id="Gb${i}"></div>
@@ -128,7 +129,7 @@ for (let i = 3; i <= octs; i++) {                   //3nth 7nt child or modulus 
                             <div class="blackKey" Id="Bb${i}"></div>
                         </div>
                         <div class="whiteKey" Id="B${i}">
-                            <div class="blackKey" id="blank2"></div>
+                            <div class="blackKey" id="blank-sharp-2"></div>
                         </div>`)
                     
 keyBoard.innerHTML = keyboardString;
@@ -380,10 +381,16 @@ document.addEventListener('keydown', function(e){
     }
 });
 
+// Playing Chords
+
+
+
+
+
+//keydown for octave change
 let octaveDisplayPanel = document.getElementById('octave-display-panel');
 octaveDisplayPanel.innerHTML = selectedOctave;
 
-//keydown for octave change
 document.addEventListener('keydown', function(e){
     if (e.key === "ArrowRight" && selectedOctave < 6) {
         selectedOctave++;
@@ -395,6 +402,8 @@ document.addEventListener('keydown', function(e){
         octaveDisplayPanel.innerHTML = selectedOctave;
         console.log(selectedOctave);
     }
+
+//keydown for patch change
     else if (e.key === "ArrowUp" && selectedPatch < (patchesArray.length - 1)){
         selectedPatch++
         patchNumberDisplay.innerHTML = `0${selectedPatch}`;
@@ -406,9 +415,22 @@ document.addEventListener('keydown', function(e){
         patchName.innerHTML = patchesArray[selectedPatch];
     }
 })
+////////////////////////////////////////////OCTAVE CHANGE ON MOUSE CLICK/////////////////////////////////
 
+const octaveControls = document.getElementById("octave-controls");
 
-
+octaveControls.addEventListener('click', function(e){
+    if (e.target.id === "lower-octave-btn" && selectedOctave > 3) {
+        selectedOctave--;
+        octaveDisplayPanel.innerHTML = selectedOctave;
+        console.log(selectedOctave);
+    }
+    else if (e.target.id === "higher-octave-btn" && selectedOctave < 6) {
+        selectedOctave++;
+        octaveDisplayPanel.innerHTML = selectedOctave;
+        console.log(selectedOctave)
+    }
+})
 
 /* octave selector attempt 1
  document.addEventListener('keydown', function(e){

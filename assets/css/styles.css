@@ -120,7 +120,7 @@
 
 }
 
-#blank1, #blank2 {
+#blank-sharp-1, #blank-sharp-2 {
     display: none;
 }
 
@@ -191,7 +191,8 @@
   width: fit-content;
   margin-top: 10px;
   font-weight: 900;
-  font-size: 1.4em;
+  font-size: 1.2em;
+
 }
 
 #octave-display-panel {
@@ -269,6 +270,6 @@
 
 }
 
-#lower-octave-button, #higher-octave-button {
+#lower-octave-btn, #higher-octave-btn {
   height: 36px;
 }
