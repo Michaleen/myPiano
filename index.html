@@ -16,7 +16,8 @@
             referrerpolicy="no-referrer"></script>
 </head>
 <body>
-    <h1 class="animate__animated animate__flash">SYNTHESIZE ME</h1>
+    <h1 class="animate__animated animate__flash">JUST IT SYNTHESIZE ME</h1>
+    <button class="animate__animated animate__fadeInDown neon-button">Desktop Controls</button>
     <div class="animate__animated animate__fadeInDown" id="pianoContainer">
         <div id="mid-controls">
             <div id="metronome">                                                                <!--METRONOME-->
@@ -31,23 +32,34 @@
                   </div>
             </div>                                                                             <!--ACCOMPANY-->
             <div class="mid" id="accompany">
-                <label><input type="checkbox" class="accompany-selector" id="bass-checkbox"/> BASS</label>
-                <label><input type="checkbox" class="accompany-selector" id="chords-checkbox"/> CHORDS</label>
+                <label><input type="checkbox" class="accompany-selector neon-button" id="bass-checkbox"/> BASS</label>
+                <label><input type="checkbox" class="accompany-selector neon-button" id="chords-checkbox"/> CHORDS</label>
             </div>
-            <div class="mid" id="backing-track-div">                                          <!--BACKING TRACK-->
-                <button id="pop-btn" class="neon-button">POP</button>
-                <audio id="pop-track"src="assets/backingTracks/pop-check-box.wav" preload="auto" loop></audio>
-                <button id="rock-btn" class="neon-button">ROCK</button>
-                <audio id="rock-track" src="assets/backingTracks/climatic-drum-groove-heavy-rock_140bpm.wav" preload="auto" loop></audio>
-                <button id="hip-hop-btn" class="neon-button">FUNK</button>
-                <audio id="hip-hop-track" src="assets/backingTracks/oldschool-beat_88bpm.wav" preload="auto" loop></audio>
-                <button id="folk-btn" class="neon-button">FOLK</button>
-                <audio id="folk-track" src="assets/backingTracks/plucked-strings-melody-smooth-guitar-loop_50bpm_E.wav" preload="auto" loop></audio>
+            <div>
+                <div class="mid" id="backing-track-div">                                          <!--BACKING TRACK-->
+                    <button id="pop-btn" class="neon-button">POP</button>
+                    <audio id="pop-track"src="assets/backingTracks/pop-check-box.wav" preload="auto" loop></audio>
+                    <button id="rock-btn" class="neon-button">ROCK</button>
+                    <audio id="rock-track" src="assets/backingTracks/climatic-drum-groove-heavy-rock_140bpm.wav" preload="auto" loop></audio>
+                    <button id="hip-hop-btn" class="neon-button">FUNK</button>
+                    <audio id="hip-hop-track" src="assets/backingTracks/oldschool-beat_88bpm.wav" preload="auto" loop></audio>
+                    <button id="folk-btn" class="neon-button">FOLK</button>
+                    <audio id="folk-track" src="assets/backingTracks/plucked-strings-melody-smooth-guitar-loop_50bpm_E.wav" preload="auto" loop></audio>
+                </div>
+            <div id="full-octave-display">
+                <div id="octave-display">OCTAVE</div>
+                <div id="octave-controls">
+                    <div class="octave-btn"><img src="assets\images\leftArrow.png" id="lower-octave-button" alt="lower octave button"></div>
+                    <div class="octave-btn"><img src="assets\images\rightArrow.png"  id="higher-octave-button"  alt="higher octave button"></div>
+                </div>            <!--FONT AWESOME-->
+                <div id="octave-display-panel">3</div>
+            </div>
+                
             </div>
             <div class="mid" id="patch">                                                         <!--PATCH-->
                 <div id="patch-controls">
-                    <div class="patch-arrow"><img src="assets/images/upButton.png" id="patch-up-btn" alt="up button"></div>
-                    <div class="patch-arrow"><img src="assets/images/downButton.png" id="patch-down-btn" alt="down button"></div>
+                    <div class="patch"><img src="assets/images/upButton.png" id="patch-up-btn" alt="patch up button"></div>
+                    <div class="patch"><img src="assets/images/downButton.png" id="patch-down-btn" alt="patch down button"></div>
                 </div>
                 <div id="patch-number-div">
                     <p id="patch-number-display">00</p>
@@ -55,7 +67,7 @@
                 <div id="patch-name">init</div>
             </div>
             </div>                                                                             <!--KEYBOARD-->
-            <div id="key-board">                                        <!--dry up this dynamically with JS-->
+            <div id="key-board">                          <!--dry up this dynamically with JS-->
 <!--                <div class="whiteKey" id="C3">
                     <div class="blackKey" id="C#3"></div>
                 </div>

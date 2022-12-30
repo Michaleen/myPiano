@@ -1,9 +1,16 @@
-:root {
+  :root {
+    background-color: rgb(228, 103, 30);
     --clr-neon: rgb(20, 141, 255);
     --clr-bg: hsl(323 21% 16%);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  
-  
+
+*, ::before, ::after {
+    font-family: 'Orbitron', sans-serif;;
+}
+
   *::before,
   *::after {
     box-sizing: border-box;
@@ -70,17 +77,6 @@
     opacity: 1;
   }
   
-:root {
-    background-color: rgb(228, 103, 30);
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-*, ::before, ::after {
-    box-sizing: inherit;
-    font-family: 'Orbitron', sans-serif;;
-}
 
 #pianoContainer {
     background-color: rgb(9, 214, 9);
@@ -138,12 +134,22 @@
 #mid-controls {
     display: flex;
     justify-content: space-between;
+  
 }
 
+#metronome {
+  margin-bottom: 20px;
+}
 #met-image {
     height: 60px;
     border: 4px solid black;
     border-radius: 10%;
+    position: relative;
+    bottom: 27px;
+}
+
+#metronome-toggle-btn {
+  margin-bottom: 14px;
 }
 
 #metronome-span {
@@ -163,8 +169,52 @@
     display: flex;
     flex-direction: row;
     border-radius: 10px;
-    height: 32px;
+    height: 28px;
 }
+
+#backing-track-div button {
+  width: 60px;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-right: auto;
+  padding-left: auto;
+}
+
+#full-octave-display {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+#octave-display {
+  height:50px;
+  width: fit-content;
+  margin-top: 10px;
+  font-weight: 900;
+  font-size: 1.4em;
+}
+
+#octave-display-panel {
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  background-color: black;
+  /*color: var(--clr-neon);*/
+  color: rgb(228, 103, 30);
+  border: 2px solid green;
+  font-size: 2em;
+}
+
+#octave-controls {
+ display: flex;
+}
+
+.octave-btn {
+  margin-top: 0.4em;
+
+}
+
 #patch {
     display: flex;
     font-family: 'Orbitron', sans-serif;
@@ -172,8 +222,8 @@
 
 #patch-controls {
   width: 20px;
-    height: 60px;
-    margin-right: 14px;
+  margin-right: 14px;
+  margin-top: 0.2em;
     
 }
 
@@ -189,8 +239,7 @@
     font-family: inherit;
     display: flex;
     align-items: center;
-    padding-top: 8px;
-    border-radius: 5px;
+    border-radius: 8px;
     border: 4px solid green;
 
 }
@@ -209,7 +258,7 @@
     align-items: center;
     font-family: inherit;
     padding-left: 8px;
-    border-radius: 5px;
+    border-radius: 8px;
     border: 4px solid green;
     font-size: 38px;
 }
@@ -220,3 +269,6 @@
 
 }
 
+#lower-octave-button, #higher-octave-button {
+  height: 36px;
+}

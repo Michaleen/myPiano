@@ -16,7 +16,7 @@ keyBoard.addEventListener('click', function(e){
 
 ////////////////////////////////////////SOUND BANK PATCHES/////////////////////////////////////////////////////////////////
 
-const patchesArray = ["init", "denseLead", "empty debug","denseLead2"];     ////should/can  i dynamically populate array from teaches folder content???
+const patchesArray = ["init", "denseLead", "empty debug","denseLead2"];     ////should/can  i dynamically populate array from patches folder content???
 const patchControls = document.getElementById('patch-controls');
 let patchNumberDisplay = document.getElementById('patch-number-display');
 let patchName = document.getElementById('patch-name');
@@ -37,8 +37,9 @@ patchControls.addEventListener('click', function(e){
     }    
 })
 
-///////////////////////////////////////////BASS SWITCH//////////////////////////////////////////////////////////
-let bassCheckbox = document.getElementById('bass-checkbox');
+///////////////////////////////////////////ADDING A BASS NOTE//////////////////////////////////////////////////////////
+
+const bassCheckbox = document.getElementById('bass-checkbox');
 let bassOctave = 0;
 let isBassChecked = false;
 noteNoOctave = "";
@@ -107,28 +108,28 @@ let keyboardString ="";
 renderKeyBoard(octaveNum)
 
 function renderKeyBoard(octs) {
-for (let i = 3; i <= octs; i++) {                   //nth child on divs to make this even dryer??
+for (let i = 3; i <= octs; i++) {                   //3nth 7nt child or modulus 3 and 7 on divs to make this dryer??
     keyboardString += (`<div class="whiteKey" id="C${i}">      
-                    <div class="blackKey" id="Db${i}"></div>
-                    </div>
-                    <div class="whiteKey" id="D${i}">
-                    <div class="blackKey" id="Eb${i}"></div>
-                    </div>
-                    <div class="whiteKey" id="E${i}">
-                    <div class="blackKey" id="blank1"></div>
-                    </div>
-                    <div class="whiteKey" id="F${i}">
-                    <div class="blackKey" id="Gb${i}"></div>
-                    </div>
-                    <div class="whiteKey" id="G${i}">
-                    <div class="blackKey" Id="Ab${i}"></div>
-                    </div>
-                    <div class="whiteKey" id="A${i}">
-                    <div class="blackKey" Id="Bb${i}"></div>
-                    </div>
-                    <div class="whiteKey" Id="B${i}">
-                    <div class="blackKey" id="blank2"></div>
-                    </div>`)
+                            <div class="blackKey" id="Db${i}"></div>
+                        </div>
+                        <div class="whiteKey" id="D${i}">
+                            <div class="blackKey" id="Eb${i}"></div>
+                        </div>
+                        <div class="whiteKey" id="E${i}">
+                            <div class="blackKey" id="blank1"></div>
+                        </div>
+                        <div class="whiteKey" id="F${i}">
+                            <div class="blackKey" id="Gb${i}"></div>
+                        </div>
+                        <div class="whiteKey" id="G${i}">
+                            <div class="blackKey" Id="Ab${i}"></div>
+                        </div>
+                        <div class="whiteKey" id="A${i}">
+                            <div class="blackKey" Id="Bb${i}"></div>
+                        </div>
+                        <div class="whiteKey" Id="B${i}">
+                            <div class="blackKey" id="blank2"></div>
+                        </div>`)
                     
 keyBoard.innerHTML = keyboardString;
 }};
@@ -260,18 +261,16 @@ function togglePlay(song) {
         hipHopTrack.pause();
         popTrack.pause();
     }
-  return song.paused ? song.play() : song.pause();
+    return song.paused ? song.play() : song.pause();
+    
+    
 };
 
-
 /*
-
 function togglePlay(song) {
     return song.paused ? song.play() : song.pause();
   };
 */
-
-
 
 //limit selection to only one  track at a time   this block was for using check boxes instead i use button now
 /*
@@ -363,7 +362,7 @@ document.addEventListener('keydown', function(e){
         
         
     }
-    
+    // ADDING BASS NOTES
     if ((selectedPatch === 0) && bassCheckbox.checked){
         synth.triggerAttackRelease(keyStroke + Number((selectedOctave) - 3)," 8n");
         synth.triggerAttackRelease(keyStroke + selectedOctave, "8n");
@@ -381,16 +380,19 @@ document.addEventListener('keydown', function(e){
     }
 });
 
-
+let octaveDisplayPanel = document.getElementById('octave-display-panel');
+octaveDisplayPanel.innerHTML = selectedOctave;
 
 //keydown for octave change
 document.addEventListener('keydown', function(e){
     if (e.key === "ArrowRight" && selectedOctave < 6) {
         selectedOctave++;
+        octaveDisplayPanel.innerHTML = selectedOctave;
         console.log(selectedOctave)
     }    
     else if (e.key === "ArrowLeft" && selectedOctave > 3) {
         selectedOctave--;
+        octaveDisplayPanel.innerHTML = selectedOctave;
         console.log(selectedOctave);
     }
     else if (e.key === "ArrowUp" && selectedPatch < (patchesArray.length - 1)){
@@ -404,7 +406,9 @@ document.addEventListener('keydown', function(e){
         patchName.innerHTML = patchesArray[selectedPatch];
     }
 })
-    
+
+
+
 
 /* octave selector attempt 1
  document.addEventListener('keydown', function(e){
